@@ -8,12 +8,16 @@ public class ReverseString {
         if (s == null) return null;
         if (s.isEmpty()) return s;
 
-        char [] chars = s.toCharArray();
-        char [] reversed = new char[chars.length];
-        for (int i = 0; i < chars.length; i++) {
-            reversed[chars.length - 1- i ] = chars[i];
+        char[] chars = s.toCharArray();
+        int left = 0;
+        int right = chars.length - 1;
+        while (left < right) {
+            char temp = chars[left];
+            chars[left] = chars[right];
+            chars[right] = temp;
+            left++;
+            right--;
         }
-
-        return new String(reversed);
+        return new String(chars);
     }
 }
