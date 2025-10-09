@@ -1,7 +1,6 @@
 package StringManipulations;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 //Count the number of vowels and consonants in a string
@@ -14,20 +13,63 @@ public class CountChars {
         return VOWEL_SET.contains(c);
     }
 
-    static Map<String, Integer> countVowelsAndConsonants(String input) {
-        if (input == null) return "";
-        input = input.replace(" ", "");
+    static Result countVowelsAndConsonants(String input) {
+        if (input == null) {
+            return Result.of(0, 0);
+        }
+        int vowels = 0;
+        int consonants = 0;
         char[] chars = input.toCharArray();
-        Map<String, Integer> map = new HashMap<>();
-        map.put("Vowels", 0);
-        map.put("Consonants", 0);
         for (char aChar : chars) {
-            if (isVowelUsingSet(aChar)) {
-                map.put("Vowels", map.get("Vowels") + 1);
-            } else if (Character.isAlphabetic(aChar)) {
-                map.put("Consonants", map.get("Consonants") + 1);
+            if (Character.isAlphabetic(aChar)) {
+                if (isVowelUsingSet(aChar)) {
+                    vowels++;
+                } else {
+                    consonants++;
+                }
             }
         }
-        return map;
+        return Result.of(vowels, consonants);
+    }
+
+    public static class Result {
+        int vowels;
+        int consonants;
+
+        private Result(){}
+        public static Result of(int vowels, int consonants){
+            Result result = new Result();
+            result.setVowels(vowels);
+            result.setConsonants(consonants);
+            return result;
+        }
+
+        private void setVowels(int vowels) {
+            this.vowels = vowels;
+        }
+
+        private void setConsonants(int consonants) {
+            this.consonants = consonants;
+        }
+
+        public int getVowels() {
+            return vowels;
+        }
+
+        public int getConsonants() {
+            return consonants;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (o == null || getClass() != o.getClass()) return false;
+            Result result = (Result) o;
+            return vowels == result.vowels && consonants == result.consonants;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(vowels, consonants);
+        }
     }
 }
