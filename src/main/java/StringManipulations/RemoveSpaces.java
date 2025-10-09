@@ -4,7 +4,9 @@ package StringManipulations;
 public class RemoveSpaces {
 
     public String removeSpace(String input) {
-        if(input == null) return "";
+        if (input == null) {
+            return "";
+        }
         return input.replace(" ", "");
     }
 }
