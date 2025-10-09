@@ -15,7 +15,7 @@ public class CountChars {
     }
 
     static Map<String, Integer> countVowelsAndConsonants(String input) {
-        if (input == null) return null;
+        if (input == null) return "";
         input = input.replace(" ", "");
         char[] chars = input.toCharArray();
         Map<String, Integer> map = new HashMap<>();
