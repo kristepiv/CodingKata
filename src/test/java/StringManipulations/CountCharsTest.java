@@ -12,7 +12,7 @@ class CountCharsTest {
 
     @Test
     public void countCharsTestForNullInput() {
-        assertNull(countVowelsAndConsonants(null));
+        assertNull(countVowelsAndConsonants(""));
     }
 
     @Test
