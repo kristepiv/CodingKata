@@ -13,13 +13,11 @@ public class DuplicateCharInString {
             throw new IllegalArgumentException("Input must not be blank");
         }
         Set<Character> aSet = new HashSet<>();
-        boolean isDuplicate = false;
         for (char aChar : input.toCharArray()) {
             if (!aSet.add(aChar)) {
-                isDuplicate = true;
-                break;
+                return true;
             }
         }
-        return isDuplicate;
+        return false;
     }
 }
