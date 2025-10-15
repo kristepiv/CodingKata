@@ -1,37 +1,38 @@
 package StringManipulations;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 class ReverseStringTest {
 
-    @org.junit.jupiter.api.Test
-    void reverseString() {
-        ReverseString rs = new ReverseString();
+    static Stream<Arguments> source() {
+        return Stream.of(
+                Arguments.of("olleh", "hello"),
+                Arguments.of("", ""),
+                Arguments.of("a", "a"),
+                Arguments.of("racecar", "racecar"),
+                Arguments.of("dlrow olleh", "hello world"),
+                Arguments.of("!321cba", "abc123!"),
+                Arguments.of("gnimmargorP", "Programming")
+        );
+    }
 
-        // Test normal string
-        assertEquals("olleh", rs.reverseString("hello"));
+    @ParameterizedTest
+    @MethodSource(value = "source")
+    void reverseString(String expected, String value) {
+        assertEquals(expected, ReverseString.reverseString(value));
+    }
 
-        // Test empty string
-        assertEquals("", rs.reverseString(""));
-
-        // Test single character
-        assertEquals("a", rs.reverseString("a"));
-
-        // Test palindrome
-        assertEquals("racecar", rs.reverseString("racecar"));
-
-        // Test string with spaces
-        assertEquals("dlrow olleh", rs.reverseString("hello world"));
-
-        // Test string with numbers and special characters
-        assertEquals("!321cba", rs.reverseString("abc123!"));
-
-        // Test null input
-        assertNull(rs.reverseString(null));
-
-        // Test longer string
-        assertEquals("gnimmargorP", rs.reverseString("Programming"));
+    @Test
+    public void testNullInput() {
+        assertNull(ReverseString.reverseString(null));
     }
 
 }
