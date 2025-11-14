@@ -1,7 +1,6 @@
 package StringManipulations;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class StringCompressor {
     //Compress a string** (e.g., "aaabb" → "a3b2")
