@@ -20,11 +20,6 @@ class FindSecondLargestElementTest {
         assertEquals(2, FindSecondLargestElement.findSecondLargestElementSinglePass(nums));
     }
 
-    void testNormalCase() {
-        int[] nums = {3, 7, 1, 7, 9, 2};
-        assertEquals(7, FindSecondLargestElement.findSecondLargestElementSinglePass(nums));
-    }
-
     @Test
     void testAllSameElements() {
         int[] nums = {5, 5, 5, 5};
