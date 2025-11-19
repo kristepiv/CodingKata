@@ -8,7 +8,13 @@ class FindLargestElementTest {
 
     @Test
     void findLargestElement() {
-        int[] nums = {2,3,5,6,0,1};
+        int[] nums = {2, 3, 5, 6, 0, 1};
         assertEquals(6, FindLargestElement.findLargestElement(nums));
+    }
+
+    @Test
+    void findLargestElementOnePass() {
+        int[] nums = {2, 3, 5, 6, 0, 1};
+        assertEquals(6, FindLargestElement.findLargestElementOnePass(nums));
     }
 }
